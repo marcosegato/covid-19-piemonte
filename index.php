@@ -96,5 +96,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
         <script src="js/scripts.js"></script>
+        <script src="js/cookie_policy.js"></script>
+        <script src="js/cookieconsent.latest.min.js"></script>
     </body>
 </html>
