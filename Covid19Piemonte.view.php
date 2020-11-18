@@ -48,7 +48,7 @@
                                 <option value='index.php'>Piemonte</option>
                                 <option data-divider="true"></option>
                                 <?php
-                                require_once "enti_list.php";
+                                require_once "lista_comuni.php";
                                 ?>
                             </select>
                         </div>
