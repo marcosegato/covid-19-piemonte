@@ -39,13 +39,13 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-hands-helping"></i></div>
                                 Credits
                             </a>
+                            <a class="nav-link" href="https://github.com/marcosegato/covid-19-piemonte" target="_blank">
+                                <div class="sb-nav-link-icon"><i class="fas fa-code"></i></div>
+                                Source code
+                            </a>
                             <a class="nav-link" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
                                 <div class="sb-nav-link-icon"><i class="fas fa-copyright"></i></div>
                                 License
-                            </a>
-                            <a class="nav-link" href="https://marcosegato.altervista.org/cookie-policy" target="_blank">
-                                <div class="sb-nav-link-icon"><i class="fas fa-lock"></i></div>
-                                Cookies
                             </a>
                         </div>
                     </div>
