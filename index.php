@@ -77,14 +77,14 @@
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">
-                                <a href="https://marcosegato.altervista.org/" target="_blank"><i class="fas fa-at"></i> Author</a>
+                                <i class="fas fa-at"></i> <a href="https://marcosegato.altervista.org/" target="_blank">Author</a>
                                 &middot;
-                                <a href="https://github.com/marcosegato/covid-19-piemonte" target="_blank"><i class="fas fa-code"></i> Source code</a>
+                                <i class="fas fa-code"></i> <a href="https://github.com/marcosegato/covid-19-piemonte" target="_blank">Source code</a>
                                 &middot;
-                                <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><i class="fab fa-creative-commons"></i> License: CC-BY-SA-4.0</a>
+                                <i class="fab fa-creative-commons"></i> <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">License: CC-BY-SA-4.0</a>
                             </div>
                             <div>
-                                <a href="https://marcosegato.altervista.org/cookie-policy" target="_blank"><i class="fas fa-file-alt"></i> Cookie Policy</a>
+                                <i class="fas fa-file-alt"></i> <a href="https://marcosegato.altervista.org/cookie-policy" target="_blank">Cookie Policy</a>
                             </div>
                         </div>
                     </div>
