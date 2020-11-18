@@ -11,6 +11,7 @@
         $positiviMille  = 0;
         $positiviMilYe  = 0;
         $rapportoPoNeg  = 0;
+        $rapportoMille  = 0;
         $rapportoCss    = "bg-warning";
     } else {
         $isEmpty = false;
@@ -19,9 +20,12 @@
         $numeroAbitanti = number_format($lastRegDate[0]["Abitanti"], 0, ',', '.');
         $positiviToday  = number_format($lastRegDate[0]["Positivi"], 0, ',', '.');
         $positiviYest   = number_format($lastRegDate[0]["Positivi"] - $lastRegDate[0]["Delta positivi"], 0, ',', '.');
-        $positiviMille  = number_format($lastRegDate[0]["Positivi 1000 abitanti"], 2, ',', '.');
-        $positiviMilYe  = number_format($lastRegDate[0]["Positivi 1000 abitanti"] - $lastRegDate[0]["Delta positivi 1000 abitanti"], 2, ',', '.');
         $rapportoPoNeg  = ($positiviYest == 0) ? ($positiviToday * 100) : ((round($positiviToday/$positiviYest,4)-1)*100);
+        $positiviMille  = $lastRegDate[0]["Positivi 1000 abitanti"];
+        $positiviMilYe  = $lastRegDate[0]["Positivi 1000 abitanti"] - $lastRegDate[0]["Delta positivi 1000 abitanti"];
+        $rapportoMille  = ($positiviMilYe == 0) ? ($positiviMille * 100) : ((round($positiviMille/$positiviMilYe,4)-1)*100);
+        $positiviMille  = number_format($positiviMille, 2, ',', '.');
+        $positiviMilYe  = number_format($positiviMilYe, 2, ',', '.');
         switch (true) {
             case ($positiviToday == 0):
                 $rapportoCss = "bg-success";
@@ -83,7 +87,12 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card <?php echo $rapportoCss; ?> text-white mb-4">
+                                <div class="card <?php echo $rapportoCss; ?> text-white mb-4 koolphp-card">
+                                    <div class="card-indicator">
+                                        <span title="">
+                                            <?php echo number_format($rapportoMille, 2, ',', '.'); ?>% <i class="fas fa-caret-<?php if($rapportoMille>=0) echo "up"; else echo "down";?>"></i>
+                                        </span>
+                                    </div>
                                     <div class="card-body"><h1><?php echo $positiviMille; ?> <small class="text-white"><?php echo "(".$positiviMilYe.")";?></small></h1></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <div class="small text-white stretched-link"><i class="fas fa-chart-pie"></i> Positivi ogni 1000 abitanti</div>
@@ -96,7 +105,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area mr-1"></i>
-                                        Storico positivi
+                                        Andamento storico
                                     </div>
                                     <div class="card-body">
                                         <?php
@@ -112,16 +121,31 @@
                                                     "Positivi"=>array(
                                                         "label"=>"Positivi",
                                                         "type"=>"number",
+                                                        "thousandSeparator"=>".",
+                                                        "prefix"=>"",
+                                                    ),
+                                                    "Positivi 1000 abitanti"=>array(
+                                                        "label"=>"Positivi ogni 1000 abitanti",
+                                                        "type"=>"number",
+                                                        "decimals"=>2,
+                                                        "thousandSeparator"=>".",
+                                                        "decimalPoint"=>",",
                                                         "prefix"=>"",
                                                     )
                                                 ),
                                                 "options"=>array(
                                                     "responsive"=>true,
-                                                    "legend"=>array(
-                                                        "position"=>"top",
-                                                    ),
                                                     "curveType"=>"function",
+                                                    "series"=> array(
+                                                        0=> array("targetAxisIndex"=> 0),
+                                                        1=> array("targetAxisIndex"=> 1, "visibleInLegend"=>false, "enableInteractivity"=>false),
+                                                    ),
+                                                    "vAxes"=>array(
+                                                        0=> array("title"=> 'Numero di Positivi'),
+                                                        1=> array("title"=> 'Positivi ogni 1000 abitanti')
+                                                    ),
                                                 ),
+                                                "colorScheme"=>array("FF0000",""),
                                             ));
                                         ?>
                                     </div>
