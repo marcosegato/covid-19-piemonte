@@ -141,8 +141,8 @@
                                                         1=> array("targetAxisIndex"=> 1, "visibleInLegend"=>false, "enableInteractivity"=>false),
                                                     ),
                                                     "vAxes"=>array(
-                                                        0=> array("title"=> 'Numero di Positivi'),
-                                                        1=> array("title"=> 'Positivi ogni 1000 abitanti')
+                                                        0=> array("title"=> 'Numero di Positivi', "viewWindow"=>array("min"=>0)),
+                                                        1=> array("title"=> 'Positivi ogni 1000 abitanti', "viewWindow"=>array("min"=>0))
                                                     ),
                                                 ),
                                                 "colorScheme"=>array("FF0000",""),
