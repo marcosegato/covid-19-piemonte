@@ -51,7 +51,7 @@ class Covid19Piemonte extends KoolReport
 
         if(_ENV == "prod") {
             $this->src('covid_19_piemonte')
-            ->query("SELECT * FROM "._MYSQL_TABLE." where Ente=:ente")
+            ->query("SELECT * FROM "._MYSQL_TABLE_HIST." where Ente=:ente")
             ->params(array(":ente"=>_ENTE))
             ->pipe($this->dataStore('contagiati_al_giorno'));
         }
