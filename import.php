@@ -105,7 +105,9 @@ while (($column = fgetcsv($file, 10000, ";")) !== FALSE) {
     }
 
     $sqlInsert = "INSERT into "._MYSQL_TABLE_H." (`Ente`,`Tipo`,`Provincia`,`ASL`,`Codice ISTAT`,`Abitanti`,`Positivi`,`Positivi 1000 abitanti`,`Delta positivi`,`Delta positivi 1000 abitanti`,`Data`) values ('".$ente."','".$tipo."','".$provincia."','".$asl."','".$codiceIstat."',$abitanti,$positivi,$positiviMilleAbitanti,$deltaPositivi,$deltaPositiviMilleAbitanti,'".$data."')";
-    $insertId = mysqli_query($conn, $sqlInsert);
+    if($tipo<>"ASL") {
+        $insertId = mysqli_query($conn, $sqlInsert);
+    }
 
     /*if (! empty($insertId)) {
         $type = "success";
