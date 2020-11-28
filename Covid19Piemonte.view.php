@@ -2,18 +2,18 @@
     use \koolreport\widgets\google\LineChart;
     use \koolreport\widgets\koolphp\Table;
 
-    if($this->dataStore('contagiati_al_giorno')->isEmpty()) {
-        $isEmpty        = true;
-        $lastDate       = "-";
-        $numeroAbitanti = 0;
-        $positiviToday  = 0;
-        $positiviYest   = 0;
-        $positiviMille  = 0;
-        $positiviMilYe  = 0;
-        $rapportoPoNeg  = 0;
-        $rapportoMille  = 0;
-        $rapportoCss    = "bg-warning";
-    } else {
+    $isEmpty        = true;
+    $lastDate       = "-";
+    $numeroAbitanti = 0;
+    $positiviToday  = 0;
+    $positiviYest   = 0;
+    $positiviMille  = 0;
+    $positiviMilYe  = 0;
+    $rapportoPoNeg  = 0;
+    $rapportoMille  = 0;
+    $rapportoCss    = "bg-warning";
+
+    if(!$this->dataStore('contagiati_al_giorno')->isEmpty()) {
         $isEmpty = false;
         $lastRegDate    = $this->dataStore('contagiati_al_giorno')->bottom(1);
         $lastDate       = DateTime::createFromFormat('Y/m/d', $lastRegDate[0]["Data"])->format('d/m/Y');
@@ -41,7 +41,7 @@
 ?>
                         <h1 class="mt-4">
                             <i class="fas fa-map-marker-alt"></i>
-                            <?php echo (($isEmpty) ? ("Nessuno") : _ENTE); ?>
+                            <?php echo (($isEmpty) ? ("Nessuno") : _ENTE_PRINT); ?>
                         </h1>
                         <div class="input-group input-group-lg mb-4">
                             <div class="input-group-prepend">
@@ -52,7 +52,12 @@
                                 <option value='index.php'>Piemonte</option>
                                 <option data-divider="true"></option>
                                 <?php
-                                require_once "lista_comuni.php";
+                                if(_TIPO == "" || _TIPO == "REG" || _TIPO == "COM") {
+                                    require_once "lista_comuni.php";
+                                }
+                                if(_TIPO == "PROV") {
+                                    require_once "lista_province.php";
+                                }
                                 ?>
                             </select>
                         </div>
@@ -152,36 +157,84 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-xl-12">
+                        <?php if( (_ENTE == "Piemonte") || (_TIPO == "REG" || _TIPO == "PROV") ) { ?>
+                        <div class="row">
+                            <div class="col-xl-4">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table mr-1"></i>
-                                        Dettaglio dello storico giornaliero
+                                        Totale Positivi per provincia
                                     </div>
-                                    <div class="card-body"> -->
+                                    <div class="card-body">
                                         <?php
-                                            // Table::create(array(
-                                            //     "dataSource"=>$this->dataStore('contagiati_al_giorno'),
-                                            //     "columns"=>array(
-                                            //         "Ente",
-                                            //         "Provincia",
-                                            //         "Abitanti",
-                                            //         "Positivi",
-                                            //         "Positivi 1000 abitanti",
-                                            //         "Data"=>array(
-                                            //             "type"=>"datetime",
-                                            //             "format"=>"Y/m/d",
-                                            //             "displayFormat"=>"d/m/Y",
-                                            //         ),
-                                            //     ),
-                                            //     "paging"=>array(
-                                            //         "pageSize"=>10,
-                                            //         "pageIndex"=>0,
-                                            //     ),
-                                            // ));
+                                            Table::create(array(
+                                                "dataSource"=>$this->dataStore('top10_province_positivi'),
+                                                "columns"=>array(
+                                                    "provincia"=>array(
+                                                        "label"=>"Provincia",
+                                                    ),
+                                                    "positivi"=>array(
+                                                        "label"=>"Totale Positivi",
+                                                        "type"=>"number",
+                                                        "thousandSeparator"=>".",
+                                                    ),
+                                                ),
+                                            ));
                                         ?>
-                                    <!-- </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div> -->
+                            <div class="col-xl-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-table mr-1"></i>
+                                        Primi 10 Comuni per positivi su 1000 abitanti
+                                    </div>
+                                    <div class="card-body">
+                                        <?php
+                                            Table::create(array(
+                                                "dataSource"=>$this->dataStore('top10_comuni_positivi1000'),
+                                                "columns"=>array(
+                                                    "comune"=>array(
+                                                        "label"=>"Comune",
+                                                    ),
+                                                    "positivi_per_1000_abitanti"=>array(
+                                                        "label"=>"Positivi ogni 1000 abitanti",
+                                                        "type"=>"number",
+                                                        "decimals"=>2,
+                                                        "thousandSeparator"=>".",
+                                                        "decimalPoint"=>",",
+                                                    ),
+                                                ),
+                                            ));
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-table mr-1"></i>
+                                        Primi 10 Comuni per totale positivi
+                                    </div>
+                                    <div class="card-body">
+                                        <?php
+                                            Table::create(array(
+                                                "dataSource"=>$this->dataStore('top10_comuni_positivi'),
+                                                "columns"=>array(
+                                                    "comune"=>array(
+                                                        "label"=>"Comune",
+                                                    ),
+                                                    "positivi"=>array(
+                                                        "label"=>"Totale Positivi",
+                                                        "type"=>"number",
+                                                        "thousandSeparator"=>".",
+                                                    ),
+                                                ),
+                                            ));
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>

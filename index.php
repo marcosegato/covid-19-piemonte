@@ -31,6 +31,11 @@
             } else {
                 define("_ENTE", "Piemonte");
             }
+            if(isset($_GET["tipo"])) {
+                define("_TIPO", htmlspecialchars($_GET["tipo"]));
+            } else {
+                define("_TIPO", "");
+            }
         ?>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="index.php">COVID-19 Piemonte</a>
@@ -41,6 +46,19 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Analisi</div>
+                            <a class="nav-link" href="index.php?tipo=REG">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Regione Piemonte
+                            </a>
+                            <a class="nav-link" href="index.php?tipo=PROV">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Province
+                            </a>
+                            <a class="nav-link" href="index.php?tipo=COM">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Comuni
+                            </a>
                             <div class="sb-sidenav-menu-heading">Info</div>
                             <a class="nav-link" href="https://marcosegato.altervista.org/" target="_blank">
                                 <div class="sb-nav-link-icon"><i class="fas fa-at"></i></div>
