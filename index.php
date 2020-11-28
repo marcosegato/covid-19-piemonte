@@ -98,7 +98,8 @@
                             <div class="card-body">
                                 <p>Soggetti risultati positivi al test covid-19 che non risultano deceduti o guariti. L'indicatore "attualmente positivi" è stato adeguato alla circolare del 12/10/2020 "COVID-19: indicazioni per la durata ed il termine dell'isolamento e della quarantena".</p>
                                 <p>
-                                Open Data repository: <a href="https://github.com/to-mg/covid-19-piemonte" target="_blank">https://github.com/to-mg/covid-19-piemonte</a><br/>
+                                Open Data repository (storico): <a href="https://github.com/to-mg/covid-19-piemonte" target="_blank">https://github.com/to-mg/covid-19-piemonte</a><br/>
+                                Open Data repository (corrente): <a href="https://github.com/floatingpurr/covid-piemonte" target="_blank">https://github.com/floatingpurr/covid-piemonte</a><br/>
                                 Original Data source: <a href="https://www.regione.piemonte.it/web/covid-19-mappa-dei-contagi-piemonte" target="_blank">https://www.regione.piemonte.it/web/covid-19-mappa-dei-contagi-piemonte</a>
                                 </p>
                             </div>
