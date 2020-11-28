@@ -1,3 +1,12 @@
+<option value="index.php?tipo=PROV&ente=AL">Alessandria (Prov.)</option>
+<option value="index.php?tipo=PROV&ente=AT">Asti (Prov.)</option>
+<option value="index.php?tipo=PROV&ente=BI">Biella (Prov.)</option>
+<option value="index.php?tipo=PROV&ente=CN">Cuneo (Prov.)</option>
+<option value="index.php?tipo=PROV&ente=NO">Novara (Prov.)</option>
+<option value="index.php?tipo=PROV&ente=TO">Torino (Prov.)</option>
+<option value="index.php?tipo=PROV&ente=VCO">Verbano-Cusio-Ossola (Prov.)</option>
+<option value="index.php?tipo=PROV&ente=VC">Vercelli (Prov.)</option>
+<option data-divider="true"></option>
 <option value="index.php?ente=Acceglio">Acceglio</option>
 <option value="index.php?ente=Acqui Terme">Acqui Terme</option>
 <option value="index.php?ente=Agliano Terme">Agliano Terme</option>
