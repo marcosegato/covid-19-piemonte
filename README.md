@@ -41,7 +41,7 @@ Tramite il file `config.php` è possibile personalizzare la propria installazion
 
 ## Acquisizione e aggregazione dei dati
 
-Lo script PHP `import.php`, che può essere schedulato sul server di hosting oppure eseguito manualmente, si occupa di scaricare localmente nella directory `datasources` i dati dai repository precedentemente indicati. I file CSV acquisiti vengono quindi processati ed importati in un database MySQL per migliorare le performance globali del portale in fase di consultazione.
+Lo script PHP `import.php`, che può essere schedulato sul server di hosting oppure eseguito manualmente, si occupa di scaricare localmente nella directory `datasources` i dati dai repository precedentemente indicati. I file CSV acquisiti vengono quindi processati ed importati in un database MySQL (utilizzare lo script `mysql_init.sql` per l'inizializzazione delle tabelle) per migliorare le performance globali del portale in fase di consultazione.
 
 A seconda delle necessità è naturalmente possibile modificare tale script per disabilitare l'importazione dei dati nel database ed utilizzare direttamente i file CSV (la lettura di questi potrebbe risultare però lenta) oppure personalizzare l'operazione adattandola al proprio database preferito.
 
