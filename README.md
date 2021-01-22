@@ -22,7 +22,7 @@ Considerata la scarsa fruibilità e leggibilità delle informazioni così espost
 
 I repository identificati per la realizzazione di questo progetto sono:
 
-- Per i dati storici: [https://github.com/to-mg/covid-19-piemonte](https://github.com/to-mg/covid-19-piemonte)
+- Per i dati storici: [https://github.com/marcosegato/covid-19-piemonte-data-scraper](https://github.com/marcosegato/covid-19-piemonte-data-scraper)
 - Per i dati relativi al giorno corrente: [https://github.com/floatingpurr/covid-piemonte](https://github.com/floatingpurr/covid-piemonte)
 
 ## Configurazione
