@@ -11,9 +11,10 @@ require_once "config.php";
 $date = new DateTime();
 echo $date->format('Y-m-d H:i:s') . " - START HIST<br/>";
 
+$gz_file_input    = "datasources/dati_per_tutto_il_periodo_ultimo.gz";
 $output_filename  = "datasources/dati_per_tutto_il_periodo_ultimo.csv";
 
-$host = "https://raw.githubusercontent.com/marcosegato/covid-19-piemonte-data-scraper/master/data/dati_per_tutto_il_periodo_ultimo.csv";
+$host = "https://raw.githubusercontent.com/marcosegato/covid-19-piemonte-data-scraper/master/data/dati_per_tutto_il_periodo_ultimo.gz";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $host);
 curl_setopt($ch, CURLOPT_VERBOSE, 1);
@@ -28,12 +29,37 @@ curl_close($ch);
 //print_r($result); // prints the contents of the collected file before writing..
 
 // the following lines write the contents to a file in the same directory (provided permissions etc)
-$fp = fopen($output_filename, 'w');
+$fp = fopen($gz_file_input, 'w');
 fwrite($fp, $result);
 fclose($fp);
 
 $date = new DateTime();
-echo $date->format('Y-m-d H:i:s') . " - CSV file download completed<br/>";
+echo $date->format('Y-m-d H:i:s') . " - ZIP file download completed<br/>";
+
+if (file_exists($gz_file_input)) {
+    echo "File $gz_file_input exists!\n";
+} else {
+    die("File $gz_file_input does not exists.\n");
+}
+
+// Unzip file
+// Raising this value may increase performance
+$buffer_size = 4096; // read 4kb at a time
+// Open our files (in binary mode)
+$file = gzopen($gz_file_input, 'rb');
+$out_file = fopen($output_filename, 'wb');
+// Keep repeating until the end of the input file
+while (!gzeof($file)) {
+    // Read buffer-size bytes
+    // Both fwrite and gzread and binary-safe
+    fwrite($out_file, gzread($file, $buffer_size));
+}
+// Files are done, close files
+fclose($out_file);
+gzclose($file);
+
+$date = new DateTime();
+echo $date->format('Y-m-d H:i:s') . " - CSV file extraction completed<br/>";
 
 if (file_exists($output_filename)) {
     echo "File $output_filename exists!\n";
