@@ -14,7 +14,7 @@ echo $date->format('Y-m-d H:i:s') . " - START HIST<br/>";
 $gz_file_input    = "datasources/dati_per_tutto_il_periodo_ultimo.csv.gz";
 $output_filename  = "datasources/dati_per_tutto_il_periodo_ultimo.csv";
 
-$host = "https://raw.githubusercontent.com/marcosegato/covid-19-piemonte-data-scraper/master/data/dati_per_tutto_il_periodo_ultimo.gz";
+$host = "https://raw.githubusercontent.com/marcosegato/covid-19-piemonte-data-scraper/master/data/dati_per_tutto_il_periodo_ultimo.csv.gz";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $host);
 curl_setopt($ch, CURLOPT_VERBOSE, 1);
