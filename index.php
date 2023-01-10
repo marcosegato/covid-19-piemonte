@@ -82,6 +82,16 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
+                        <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                            <p><strong>INFO</strong>: L'aggiornamento della mappa dei contagi è sospeso.</p>
+                            <hr/>
+                            <p class="small mb-0">
+                                Dal 31.12.2022, con l'applicazione delle indicazioni contenute nella circolare ministeriale "Aggiornamento delle modalità di gestione dei casi e dei contatti stretti di caso COVID-19 del 31.12.2022 Prot. 0051961-31/12/2022-DGPRE-DGPRE-P", non è più richiesto l'esito negativo del test per sospendere l'isolamento, se non in casi specifici. Pertanto, il dato quotidiano relativo al numero di persone attualmente positive non risulta più quantificabile.
+                            </p>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Chiudi">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
                         <?php
                             require_once "Covid19Piemonte.php";
